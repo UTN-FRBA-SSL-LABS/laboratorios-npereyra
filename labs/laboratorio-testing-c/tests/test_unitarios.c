@@ -27,7 +27,6 @@ void test_agregar_uno(void) {
  * ═══════════════════════════════════════════════════════════════════════════ */
 
 /* TODO: pegar aqui la funcion test_total_precio_unitario() */
-``c
 void test_total_precio_unitario(void) {
     printf("\n[total: un producto, cantidad 1]\n");
     Carrito c;
@@ -42,7 +41,6 @@ void test_total_precio_unitario(void) {
  * ═══════════════════════════════════════════════════════════════════════════ */
 
 /* TODO: pegar y completar la funcion test_total_con_cantidad() */
-`c
 void test_total_con_cantidad(void) {
     printf("\n[total: un producto, cantidad 2]\n");
     Carrito c;
