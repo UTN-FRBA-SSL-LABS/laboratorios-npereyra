@@ -1,6 +1,6 @@
 # Laboratorio: Introducción a Bison
 
-**Nombre:** ___________________________
+**Nombre:** Pereyra Nehuén Fernando
 
 ## Verificación y calificación
 
