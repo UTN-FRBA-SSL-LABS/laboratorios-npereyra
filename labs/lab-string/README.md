@@ -277,7 +277,7 @@ Los tests de `IsEmpty` ya están activos en `StringTest.c`. Corré `make test` y
 
 **P1** — `IsEmpty` podría haberse escrito también como `return s[0] == '\0'`. ¿Son equivalentes? ¿Por qué?
 
-> R:
+> R:Si, porque en C una cadena siempre termina con el carácter nulo.
 
 ---
 
@@ -328,14 +328,15 @@ make test
 
 **P2** — ¿Qué hace `s + 1`? ¿Por qué avanza al siguiente carácter y no al siguiente byte?
 
-> R:
+> R:s + 1 avanza al siguiente elemento apuntado por el puntero a char, usando aritmetica de punteros.
+>   Avanza al siguiente carácter ya que s + 1 representa avanzar esta cantidad de bytes: 1 * sizeof(char). Justo en C un char tiene de tamaño 1 byte. Pero si fuese un entero, avanza 4  bytes.    
 
 **P3** — Si llamaras a `GetLength(NULL)`, ¿qué pasaría? ¿Por qué las precondiciones del contrato dicen `s != NULL`?
 
-> R:
+> R:Porque es una cadena, una cadena siempre tiene al menos un caracter por la convencion que usa C. El caracter '\0' esta presente siempre en el final de una cadena porque representa "fin de cadena".
 
 ```
-GETLENGTH_PASA=
+GETLENGTH_PASA=SI
 ```
 _(escribí SI cuando todos los tests de GetLength pasen)_
 
