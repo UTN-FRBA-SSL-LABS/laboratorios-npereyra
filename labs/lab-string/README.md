@@ -328,8 +328,7 @@ make test
 
 **P2** — ¿Qué hace `s + 1`? ¿Por qué avanza al siguiente carácter y no al siguiente byte?
 
-> R:s + 1 avanza al siguiente elemento apuntado por el puntero a char, usando aritmetica de punteros.
->   Avanza al siguiente carácter ya que s + 1 representa avanzar esta cantidad de bytes: 1 * sizeof(char). Justo en C un char tiene de tamaño 1 byte. Pero si fuese un entero, avanza 4  bytes.    
+> R:s + 1 avanza al siguiente elemento apuntado por el puntero a char, usando aritmetica de punteros. Avanza al siguiente carácter ya que s + 1 representa avanzar esta cantidad de bytes: 1 * sizeof(char). Justo en C un char tiene de tamaño 1 byte. Pero si fuese un entero, avanza 4  bytes.    
 
 **P3** — Si llamaras a `GetLength(NULL)`, ¿qué pasaría? ¿Por qué las precondiciones del contrato dicen `s != NULL`?
 
@@ -368,7 +367,8 @@ El `while` termina cuando alguna de las dos cadenas llega a `'\0'`. Después dev
 
 **P4** — ¿Qué dos casos están mal cubiertos por `return 1`? Describí un ejemplo para cada uno.
 
-> R:
+> R:Un caso puede ser que la cadena s1 sea mas corta que s2, por lo que el while corta y luego se retorna 1, lo que estaria mal ya que las dos cadenas son distintas. Por ejemplo; s1 = "hola" y s2 = "holaMundo", son dos cadenas diferentes, sin embargo la funcion AreEqual esta retornando 1, cuando deberia retornar 0.
+> Otro caso mal cubierto es cuando una de las cadenas es vacia y la otra no. Ejemplo: sea s1 = ε y sea s2 = "holaMundo" retorna 1 cuando deberia retornar 0 (falso).
 
 #### Corrección
 
@@ -385,7 +385,7 @@ make test
 ```
 
 ```
-AREEQUAL_PASA=
+AREEQUAL_PASA=SI
 ```
 _(escribí SI cuando todos los tests de AreEqual pasen)_
 
