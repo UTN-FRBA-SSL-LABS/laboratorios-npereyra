@@ -338,10 +338,10 @@ Las líneas con `#####` nunca se ejecutaron — no están cubiertas por los test
 
 **P10** — ¿Hay alguna línea de `carrito.c` con `#####`? ¿Cuál y por qué no se ejecutó?
 
-> R:
+> R: Si, hay dos lineas con #####, son la linea 29 y 30. 
 
 ```
-COBERTURA_COMPLETA=
+COBERTURA_COMPLETA=NO
 ```
 _(SI si todas las líneas están cubiertas, NO si hay alguna con #####)_
 
@@ -351,27 +351,29 @@ _(SI si todas las líneas están cubiertas, NO si hay alguna con #####)_
 
 **P11** — ¿Qué diferencia hay entre un test unitario y uno de integración? ¿Cuál de los dos detectó primero el bug de `carrito_total`?
 
-> R:
+> R: la diferencia entre las dos es que se usan en distintas etapas del proyecto. El test unitario es el primer test que hay que pensar cuando estamos desarrollando funciones. Es el que te ayuda a detectar un bug de forma temprana y puntual. Los test de integración, en cambio, deben usarse para ver si combinando funciones no aparece algun bug. 
+> El test unitario detecto primero el bug de carrito_total.
 
 **P12** — El bug de capacidad en `carrito_agregar` causa un **buffer overflow**: se escribe más allá del array. ¿Por qué esto es peligroso en C pero no ocurriría en un lenguaje como Python o Java?
 
-> R:
+> R: en C es peligroso exceder los limites del array porque este no controla si te excedes de él, podemos pisar datos que esten inmediatamente despues. Provoca comportamiento indeterminado, el programa puede seguir en ejecución hasta que rompe.
+> En cambio, en Java o Phyton siempre se esta verificando los limites, si te excedes el programa detiene la ejecución.
 
 **P13** — En este laboratorio encontraste los bugs escribiendo tests. ¿Qué tiene de mejor este enfoque frente a mirar el código directamente?
 
-> R:
+> R: Podemos encontrar bugs que pueden pasar por alto en revision de codigo y ejecutación del programa, como es el caso en este laboratorio con la función carrito_agregar de carrito.c. Dicho bug es provocado por un operador mal escrito, en la revisión puede pasarse por alto, que no necesariamente hace que el programa rompa en el momento que se exceden los limites, causando comportamiento indeterminado y en el momento de producirse un bug es dificl poder encontrar donde se origino. Con el test se evita este escenario, ya que detectamos el bug mucho antes y lo primero que vamos a revisar es el bloque de codigo de la función testeada.
 
 **P14** — El test `test_total_precio_unitario` (cantidad = 1) **pasó** a pesar del bug, mientras que `test_total_con_cantidad` (cantidad = 2) **falló**. ¿Por qué el primer test no detectó el bug?
 
-> R:
+> R:Porque el primer test era 1 cantidad, no iba a fallar. Ya cuando queremos ver el escenario de 2 cantidades de un producto se ve el bug, los numeros no dan porque estaba mal implementada la función carrito_total de carrito.c, no cumplia el requerimiento de calcular el total de cuando tenias mas de 1 cantidad de un producto del carrito.
 
 ```
-BUG_EN_FUNCION_1=
+BUG_EN_FUNCION_1=carrito_total
 ```
 _(nombre de la función con el primer bug)_
 
 ```
-BUG_EN_FUNCION_2=
+BUG_EN_FUNCION_2=carrito_agregar
 ```
 _(nombre de la función con el segundo bug)_
 
