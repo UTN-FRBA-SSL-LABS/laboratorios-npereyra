@@ -13,6 +13,12 @@
 
 int main(int argc, char *argv[]) {
     (void)argc; (void)argv;
-    /* TODO */
+    char **arg = argv +1;
+    int resultadoTotal = 0;
+    while (*arg != NULL) {
+        resultadoTotal += ToInteger(*arg);
+        arg++;
+    }
+    printf("%d\n", resultadoTotal);
     return 0;
 }
