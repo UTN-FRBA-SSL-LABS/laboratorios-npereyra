@@ -453,7 +453,7 @@ make test
 ```
 
 ```
-CONTAINS_PASA=
+CONTAINS_PASA=SI
 ```
 _(escribí SI cuando todos los tests de Contains pasen)_
 
@@ -468,7 +468,7 @@ Antes de implementar, discutí con tu equipo:
 
 **P6** — Conclusión de la discusión:
 
-> R:
+> R: Es correcto tenerla en un módulo separado Conversion para mantener la cohesión de cada módulo. Mientras que la biblioteca String agrupa operaciones propias del manejo y consulta de cadenas, ToInteger cruza la frontera entre dos tipos distintos (su dominio de entrada es String, pero su codominio de salida es Integer), teniendo la responsabilidad específica de convertir un tipo de dato en otro.
 
 ---
 
@@ -495,7 +495,7 @@ int ToInteger(const char *s) {
 
 **P7** — El loop acumula correctamente el valor en `resultado`. ¿Qué está mal en el `return`?
 
-> R:
+> R:Lo que se hace mal en el return es devolver unicamente 1 o -1, que son los valores que toma la variable signo. Lo correcto es usar estos valores junto al valor de la variable resultado. La correccion seria: return signo * resultado;
 
 #### Corrección
 
@@ -507,10 +507,10 @@ make test
 
 **P8** — La expresión `*s - '0'` convierte un carácter dígito al entero correspondiente. ¿Por qué funciona? ¿Qué devuelve `'3' - '0'`?
 
-> R:
+> R:Funciona porque en ASCII estandar los caracteres tienen asociados un valor entero del 0 al 127, en los caracteres decimales '0', '1', ..., '9' toman los valores entre 48 y 57 respectivamente. Entonces, '3' - '0' devuelve 51 - 48 = 3. 
 
 ```
-TOINTEGER_PASA=
+TOINTEGER_PASA=SI
 ```
 _(escribí SI cuando todos los tests de ToInteger pasen)_
 
@@ -563,7 +563,7 @@ foo
 
 **P9** — ¿Por qué `(void)argc` suprime un warning? ¿Cuándo sería necesario usar `argc`?
 
-> R:
+> R: Suprime el warning porque le indica explícitamente al compilador que la variable fue descartada a propósito. Sería necesario usar argc cuando se necesite validar la cantidad exacta de argumentos que le pasan por la línea de comandos.
 
 ---
 
@@ -590,7 +590,7 @@ Salida esperada:
 ```
 
 ```
-LONGITUDES_PASA=
+LONGITUDES_PASA=SI
 ```
 _(SI o NO)_
 
@@ -617,7 +617,7 @@ make mayorlongitud
 ```
 
 ```
-MAYORLONGITUD_PASA=
+MAYORLONGITUD_PASA=SI
 ```
 _(SI o NO)_
 
