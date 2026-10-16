@@ -46,8 +46,29 @@ int AreDecimalDigits(const char *s) {
 }
 
 /* ── Contains — implementar completo ────────────────────────────────────── */
-
+/*
 int Contains(const char *s, char c) {
-    (void)s; (void)c;
-    return 0;  /* reemplazar con la implementacion */
-}
+    int i = 0;
+    while (s[i] != '\0') {
+        if (s[i] == c) {
+            return 1;
+        }
+        i++;
+    } 
+    return 0;  /* reemplazar con la implementacion *./
+} */
+/* Implementación recursiva de Contains
+int Contains(const char *s, char c) {
+    if (IsEmpty(s)) {
+        return 0;
+    } else if (s[0] == c) {
+        return 1;
+    } else return Contains(s + 1, c);
+    } */
+
+    int Contains(const char *s, char c) {
+        if (IsEmpty(s)) {
+            return 0;
+        }
+        return !IsEmpty(s) && (*s == c || Contains(s + 1, c));
+    }
