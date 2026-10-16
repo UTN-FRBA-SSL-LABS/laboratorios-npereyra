@@ -74,7 +74,7 @@ Vas a ver el carrito con tres productos y su total.
 
 **P1** — Calculá a mano el total esperado: Leche ($350 x2) + Pan ($200 x3) + Queso ($1500 x1).
 
-> R:2800(escribí el total esperado)
+> R:2800
 
 **P2** — ¿El total que imprime el programa coincide con lo que calculaste? Si no coincide, ¿cuánto muestra?
 
@@ -338,7 +338,7 @@ Las líneas con `#####` nunca se ejecutaron — no están cubiertas por los test
 
 **P10** — ¿Hay alguna línea de `carrito.c` con `#####`? ¿Cuál y por qué no se ejecutó?
 
-> R: Si, hay dos lineas con #####, son la linea 29 y 30. 
+> R: Si, hay dos lineas con #####, la linea 29 y 30, porque corresponden a la función carrito_descuento, la cual no fue llamada dentro de test_unitarios.c, sino recién en test_integracion.c 
 
 ```
 COBERTURA_COMPLETA=NO
